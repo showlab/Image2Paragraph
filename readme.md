@@ -8,6 +8,7 @@
 <p align="center">
   <img src="examples/gpu_memory.png" alt="Your Image Description" width=600>
 </p>
+
 ![](examples/introduction.png)
 
 
