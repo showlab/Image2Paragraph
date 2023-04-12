@@ -2,61 +2,35 @@
   <img src="examples/logo.png" alt="Your Image Description" width=800>
 </p>
 
-# Transform Image Into Unique Paragraph
+# Transform Image Into Unique Paragraph 
+**(Can run on 8GB memory GPU)**
 
+![](examples/gpu_memory.png)
 ![](examples/introduction.png)
 
-## 1. Installment
 
-### BLIP2, ChatGPT,
-```bash
-pip install transformers
-pip install openai
-```
+## Visualization
+![](output/2_result.png)
 
-### ControlNet from diffuser
+![](output/3_result.jpg)
 
-Follow instruction in [diffuser](https://github.com/huggingface/diffusers).
+![](output/4_result.jpg)
 
-### GRIT
+##  Installation
 
-Follow instruction in [GRIT](https://github.com/JialianW/GRiT/blob/master/docs/INSTALL.md).
+Please find installation instructions in [INSTALL.md](INSTALL.md).
 
-I suggest to create a new env for GRIT since it depends on Detectron2.
-
-Then
-```
-cp utils/image_dense_captions.py [YOUR_GRIT_DIRECTORY]
-```
-
-modify line10-line12 in __/models/grit_model.py__ accordingly.
-
-### Segment Anything
-Follow instruction in [diffuser](https://github.com/huggingface/diffusers).
-
-
-## 2. News
+## 1. News
 ### Done
 - GRIT example.
 - ControNet, BLIP2.
 
 ### Doing
-- Use Segment Anything.
-- Replace ChatGPT with own LLM.
-- Show retrieval result.
-- Gradio
+- Support Segment Anything for fine-grained semantic.
+- Replace ChatGPT with own trained LLM.
+- Show retrieval result in gradio.
 
-### 3. Retrieval Result on COCO
-
-| Method  | Trainable Parameter | Running Time  |  IR@1   | TR@1|
-|---|---|---|---|---|
-| Image-text  | 230M | 9H |  43.8 |  33.2 |
-|Generated Paragraph-text| 0 |5m|__49.7__|__36.1__|
-
-
-Interesting, we find compress image into paragraph. The retrieval result is even better than use source image.
-
-### 4. Start
+## 2. Start
 
 ### Simple visualization
 
@@ -77,6 +51,18 @@ python main_gradio.py
 ```
 
 ![](examples/gradio_visualization.png)
+
+
+
+## 3. Retrieval Result on COCO
+
+| Method  | Trainable Parameter | Running Time  |  IR@1   | TR@1|
+|---|---|---|---|---|
+| Image-text  | 230M | 9H |  43.8 |  33.2 |
+|Generated Paragraph-text| 0 |5m|__49.7__|__36.1__|
+
+
+Interesting, we find compress image into paragraph. The retrieval result is even better than use source image.
 
 ## Acknowledgment
 

@@ -10,8 +10,8 @@ class ImageCaptioning:
         self.processor, self.model = self.initialize_model()
 
     def initialize_model(self):
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        # device = "cpu" # for low gpu memory devices
+        # device = "cuda" if torch.cuda.is_available() else "cpu"
+        device = "cpu" # for low gpu memory devices
         if device == 'cpu':
             self.data_type = torch.float32
         else:
@@ -25,8 +25,8 @@ class ImageCaptioning:
 
     def image_caption(self, image_src):
         image = Image.open(image_src)
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        # device = "cpu" # for low gpu memory devices
+        # device = "cuda" if torch.cuda.is_available() else "cpu"
+        device = "cpu" # for low gpu memory devices
         inputs = self.processor(images=image, return_tensors="pt").to(device, self.data_type)
         generated_ids = self.model.generate(**inputs)
         generated_text = self.processor.batch_decode(generated_ids, skip_special_tokens=True)[0].strip()
