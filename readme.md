@@ -1,4 +1,6 @@
-![](examples/logo.png)
+<p align="center">
+  <img src="examples/logo.png" alt="Your Image Description">
+</p>
 
 # Transform Image Into Unique Paragraph
 
@@ -51,6 +53,8 @@ Follow instruction in [diffuser](https://github.com/huggingface/diffusers).
 | Image-text  | 230M | 9H |  43.8 |  33.2 |
 |Generated Paragraph-text| 0 |5m|__49.7__|__36.1__|
 
+
+Interesting, we find compress image into paragraph. The retrieval result is even better than use source image.
 
 ### 4. Start
 
