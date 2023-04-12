@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="examples/logo.png" alt="Your Image Description">
+  <img src="examples/logo.png" alt="Your Image Description" width=800>
 </p>
 
 # Transform Image Into Unique Paragraph
