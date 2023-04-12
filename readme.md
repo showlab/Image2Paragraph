@@ -43,7 +43,12 @@ Please find installation instructions in [INSTALL.md](INSTALL.md).
 
 ```bash
 export OPENAI_KEY=[YOUR KEY HERE]
-python main.py --image_src --image_src ["abs_path]
+python main.py  --image_src [abs_path] --out_image_name [out_file_name]
+```
+
+like
+```bash
+python main.py --image_src "/Code/Image2Paragraph/examples/3.jpg" --out_image_name "output/3_result.jpg"
 ```
 
 The generated text and image are show in "output/".
