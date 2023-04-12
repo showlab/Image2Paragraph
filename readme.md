@@ -5,16 +5,22 @@
 # Transform Image Into Unique Paragraph 
 **(Can run on 8GB memory GPU)**
 
-![](examples/gpu_memory.png)
+<p align="center">
+  <img src="examples/gpu_memory.png" alt="Your Image Description" width=600>
+</p>
 ![](examples/introduction.png)
 
 
 ## Visualization
-![](output/2_result.png)
-
-![](output/3_result.jpg)
-
-![](output/4_result.jpg)
+<p align="center">
+  <img src="output/2_result.png" alt="Your Image Description" width=600>
+</p>
+<p align="center">
+  <img src="output/3_result.jpg" alt="Your Image Description" width=600>
+</p>
+<p align="center">
+  <img src="output/4_result.jpg" alt="Your Image Description" width=600>
+</p>
 
 ##  Installation
 
@@ -39,8 +45,7 @@ export OPENAI_KEY=[YOUR KEY HERE]
 python main.py --image_src --image_src ["abs_path]
 ```
 
-The generated text and image are show in "output/", as below:
-![](output/1_result.jpg)
+The generated text and image are show in "output/".
 
 **Note: Use GPT4 for good result as GPT3.5 miss the position information sometime.**
 
