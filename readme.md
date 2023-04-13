@@ -83,11 +83,11 @@ Use device='cuda' as default.
 ## 3. Visualization
 
 
+<center>
 <table>
-<div style="width: 100%; display: flex; justify-content: center;">
   <tr>
     <td>
-      <img src="examples/segment_anything_example.png" alt="Your Image Description" width=280>
+      <img src="examples/segment_anything_example.jpg" alt="Your Image Description" width=220>
     </td>
     <td>
       <img src="examples/semantic_segment_example.png" alt="Your Image Description" width=220>
