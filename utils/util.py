@@ -2,6 +2,12 @@ from PIL import Image, ImageDraw, ImageFont
 import cv2
 import os
 import textwrap
+import nltk
+nltk.download('punkt', quiet=True)
+nltk.download('averaged_perceptron_tagger', quiet=True)
+from nltk.tokenize import word_tokenize
+from nltk import pos_tag
+
 
 def read_image_width_height(image_path):
     image = Image.open(image_path)
@@ -13,7 +19,7 @@ def display_images_and_text(source_image_path, generated_image, generated_paragr
     # Create a new image that can fit the images and the text
     width = source_image.width + generated_image.width
     height = max(source_image.height, generated_image.height)
-    new_image = Image.new("RGB", (width, height + 100), "white")
+    new_image = Image.new("RGB", (width, height + 150), "white")
 
     # Paste the source image and the generated image onto the new image
     new_image.paste(source_image, (0, 0))
@@ -39,3 +45,10 @@ def display_images_and_text(source_image_path, generated_image, generated_paragr
     # new_image.show()
     new_image.save(outfile_name)
     return 1
+
+
+def extract_nouns_nltk(paragraph):
+    words = word_tokenize(paragraph)
+    pos_tags = pos_tag(words)
+    nouns = [word for word, tag in pos_tags if tag in ('NN', 'NNS', 'NNP', 'NNPS')]
+    return nouns

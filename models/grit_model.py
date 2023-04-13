@@ -24,14 +24,15 @@ class DenseCaptioning():
     
     def image_dense_caption(self, image_src):
         result = subprocess.run([self.grit_env_python, self.grit_script, '--image_src', image_src, '--test-task', 'DenseCap', '--config-file', 'configs/GRiT_B_DenseCap_ObjectDet.yaml', '--opts', 'MODEL.WEIGHTS', self.model_weights], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, text=True,  cwd=self.grit_working_directory)
-        print("Subprocess finished, continuing main.py...")
+        print("Subprocess finished, continuing main.py...\n")
         # output = result.stdout
         output_file = os.path.expanduser("~/grit_output.txt")
         with open(output_file, 'r') as f:
             output = f.read()
         # print('*'*100)
         # print("Output:", output)
+        print("Step2, Dense Caption:\n")
         print(output.split('[START]'[-1]))
-        print('*'*100)
+        print('\n'+'*'*100)
         return output
     

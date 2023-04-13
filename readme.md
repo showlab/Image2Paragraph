@@ -11,6 +11,10 @@
 
 ![](examples/introduction.png)
 
+<p align="center">
+  <img src="examples/introduction_2.png" alt="Your Image Description" width=600>
+</p>
+
 
 ## Visualization
 <p align="center">
@@ -31,9 +35,9 @@ Please find installation instructions in [INSTALL.md](INSTALL.md).
 ### Done
 - GRIT example.
 - ControNet, BLIP2.
+- Support Segment Anything for fine-grained semantic.
 
 ### Doing
-- Support Segment Anything for fine-grained semantic.
 - Replace ChatGPT with own trained LLM.
 - Show retrieval result in gradio.
 
@@ -51,6 +55,7 @@ like
 python main.py --image_src "/Code/Image2Paragraph/examples/3.jpg" --out_image_name "output/3_result.jpg"
 ```
 
+
 The generated text and image are show in "output/".
 
 **Note: Use GPT4 for good result as GPT3.5 miss the position information sometime.**
@@ -63,9 +68,22 @@ python main_gradio.py
 
 ![](examples/gradio_visualization.png)
 
+If you have GPU Memory larger than 20GB.
+Use device='cuda' as default.
 
 
-## 3. Retrieval Result on COCO
+## 3. Visualization
+
+#### Segment Anything result
+#### The semantic segment anything result
+
+<p align="center">
+  <img src="examples/semantic_segment_example.png" alt="Your Image Description" width=260>
+</p>
+
+
+
+## 4. Retrieval Result on COCO
 
 | Method  | Trainable Parameter | Running Time  |  IR@1   | TR@1|
 |---|---|---|---|---|

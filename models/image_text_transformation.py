@@ -2,6 +2,7 @@ from models.blip2_model import ImageCaptioning
 from models.grit_model import DenseCaptioning
 from models.gpt_model import ImageToText
 from models.controlnet_model import TextToImage
+from models.region_semantic import RegionSemantic
 from utils.util import read_image_width_height, display_images_and_text
 import argparse
 from PIL import Image
@@ -28,6 +29,8 @@ class ImageTextTransformation:
         self.dense_caption_model = DenseCaptioning()
         self.gpt_model = ImageToText(openai_key)
         self.controlnet_model = TextToImage()
+        self.region_semantic_model = RegionSemantic()
+
     
     def image_to_text(self, img_src):
         # the information to generate paragraph based on the context
@@ -35,7 +38,8 @@ class ImageTextTransformation:
         width, height = read_image_width_height(img_src)
         image_caption = self.image_caption_model.image_caption(img_src)
         dense_caption = self.dense_caption_model.image_dense_caption(img_src)
-        generated_text = self.gpt_model.paragraph_summary_with_gpt(image_caption, dense_caption, width, height)
+        region_semantic = self.region_semantic_model.region_semantic(img_src)
+        generated_text = self.gpt_model.paragraph_summary_with_gpt(image_caption, dense_caption, region_semantic, width, height)
         return generated_text
 
     def text_to_image(self, text):
