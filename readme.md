@@ -10,7 +10,12 @@
 
 **Main Pipeline**
 
-![](examples/introduction.png)
+<p align="center">
+  <img src="examples/introduction.png" alt="Your Image Description" width=600>
+</p>
+
+
+
 
 **Reasoning Details**
 
@@ -77,7 +82,9 @@ Use device='cuda' as default.
 
 ## 3. Visualization
 
+
 <table>
+<div style="width: 100%; display: flex; justify-content: center;">
   <tr>
     <td>
       <img src="examples/segment_anything_example.png" alt="Your Image Description" width=280>
