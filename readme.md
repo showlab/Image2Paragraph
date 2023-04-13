@@ -4,15 +4,18 @@
 
 # Transform Image Into Unique Paragraph 
 **(Can run on 8GB memory GPU)**
-
 <p align="center">
   <img src="examples/gpu_memory.png" alt="Your Image Description" width=600>
 </p>
 
+**Main Pipeline**
+
 ![](examples/introduction.png)
 
+**Reasoning Details**
+
 <p align="center">
-  <img src="examples/introduction_2.png" alt="Your Image Description" width=600>
+  <img src="examples/introduction_2.jpg" alt="Your Image Description" width=600>
 </p>
 
 
@@ -74,12 +77,21 @@ Use device='cuda' as default.
 
 ## 3. Visualization
 
-#### Segment Anything result
-#### The semantic segment anything result
+<table>
+  <tr>
+    <td>
+      <img src="examples/segment_anything_example.png" alt="Your Image Description" width=280>
+    </td>
+    <td>
+      <img src="examples/semantic_segment_example.png" alt="Your Image Description" width=220>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">Segment Anything Mask</td>
+    <td align="center">Semantic Segment Anything </td>
+  </tr>
+</table>
 
-<p align="center">
-  <img src="examples/semantic_segment_example.png" alt="Your Image Description" width=260>
-</p>
 
 
 
@@ -95,4 +107,4 @@ Interesting, we find compress image into paragraph. The retrieval result is even
 
 ## Acknowledgment
 
-This work is based on [ChatGPT](http://chat.openai.com), [BLIP2](https://huggingface.co/spaces/Salesforce/BLIP2), [GRIT](https://github.com/JialianW/GRiT),  [OFA](https://github.com/OFA-Sys/OFA),[Segment-Anything](https://segment-anything.com), [ControlNet](https://github.com/lllyasviel/ControlNet).
+This work is based on [ChatGPT](http://chat.openai.com), [BLIP2](https://huggingface.co/spaces/Salesforce/BLIP2), [GRIT](https://github.com/JialianW/GRiT),  [OFA](https://github.com/OFA-Sys/OFA),[Segment-Anything](https://segment-anything.com), [Semantic-Segment-Anything](https://github.com/fudan-zvg/Semantic-Segment-Anything), [ControlNet](https://github.com/lllyasviel/ControlNet).
