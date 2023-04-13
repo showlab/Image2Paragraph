@@ -25,13 +25,13 @@ class ImageSegmentation():
         object_labels = []
         for mask in sorted_masks:
             m = mask['segmentation']
-            bbox = ""
-            object_label = ""
+            bbox = m['bbox']
+            object_label = classify_object(m['segmentation') # pass
             bboxs.append(bbox)
             object_labels.append(object_label)
         return bbox, object_labels
 
-    def segment_image(self, image_src, mask_generator):
+    def segment_image(self, image_src):
         image = cv2.imread(image_src)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         masks = self.model.generate(image)
