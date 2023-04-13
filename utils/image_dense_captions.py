@@ -95,10 +95,14 @@ if __name__ == "__main__":
 
     cfg = setup_cfg(args)
     demo = VisualizationDemo(cfg)
-    success_data = []
     if args.image_src:
         img = read_image(args.image_src, format="BGR")
         start_time = time.time()
         predictions, visualized_output = demo.run_on_image(img)
         new_caption = dense_pred_to_caption(predictions)
-    sys.exit(new_caption)
+    print(new_caption)
+
+    output_file = os.path.expanduser("~/grit_output.txt")
+    with open(output_file, 'w') as f:
+        f.write(new_caption)
+    # sys.exit(new_caption)
