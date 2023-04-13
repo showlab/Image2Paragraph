@@ -2,7 +2,13 @@
   <img src="examples/logo.png" alt="Your Image Description" width=800>
 </p>
 
+
 # Transform Image Into Unique Paragraph 
+
+
+[![Twitter](examples/icon/twitter.png)](https://twitter.com/awinyimgprocess/status/1646225454599372800?s=46&t=HvOe9T2n35iFuCHP5aIHpQ), [Project Website(Coming Soon)]()
+
+
 **(Can run on 8GB memory GPU)**
 <p align="center">
   <img src="examples/gpu_memory.png" alt="Your Image Description" width=600>
@@ -34,6 +40,8 @@
 <p align="center">
   <img src="output/4_result.jpg" alt="Your Image Description" width=600>
 </p>
+
+
 
 ##  Installation
 
@@ -80,7 +88,7 @@ If you have GPU Memory larger than 20GB.
 Use device='cuda' as default.
 
 
-## 3. Visualization
+## 3. Segment Visualization
 
 
 <center>
