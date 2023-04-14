@@ -84,12 +84,12 @@ Please find installation instructions in [install.md](install.md).
 
 ```bash
 export OPENAI_KEY=[YOUR KEY HERE]
-python main.py  --image_src [abs_path] --out_image_name [out_file_name]
+python main.py  --image_src [image_path] --out_image_name [out_file_name]
 ```
 
 like
 ```bash
-python main.py --image_src "/Code/Image2Paragraph/examples/3.jpg" --out_image_name "output/3_result.jpg"
+python main.py --image_src "examples/3.jpg" --out_image_name "output/3_result.jpg"
 ```
 
 **Note: If you have GPU card with larger memory than 8GB. Comment line22 in models/segment_models/semantic_segment_anything_model.py and line29 in models/blip2_model.py for fast inference.**
