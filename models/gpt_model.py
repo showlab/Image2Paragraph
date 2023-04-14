@@ -7,11 +7,11 @@ class ImageToText:
 
     def initialize_template(self):
         prompt_prefix_1 = """Generate only an informative and nature paragraph based on the given information(a,b,c,d):\n"""  
-        prompt_prefix_2 = """/\n a. Image Resolution:  """
-        prompt_prefix_3 = """/\n b. Image Caption: """
-        prompt_prefix_4 = """/\n c. Dense Caption: """
-        prompt_prefix_5 = """/\n d. Region Semantic: """
-        prompt_suffix = """/\n There are some rules:
+        prompt_prefix_2 = """\n a. Image Resolution:  """
+        prompt_prefix_3 = """\n b. Image Caption: """
+        prompt_prefix_4 = """\n c. Dense Caption: """
+        prompt_prefix_5 = """\n d. Region Semantic: """
+        prompt_suffix = """\n There are some rules:
         Show object, color and position.
         Use nouns rather than coordinates to show position information of each object.
         No more than 7 sentences.

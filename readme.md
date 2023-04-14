@@ -52,6 +52,7 @@
 - [x] Semantic Segment Anything.
 - [x] Segment Anything for fine-grained semantic.
 - [x] Gradio.
+- [x] Integrate GRIT into our code.
 
 #### Doing
 - [ ] Support GPT4 API.
