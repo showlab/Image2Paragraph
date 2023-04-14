@@ -32,7 +32,8 @@ class DenseCaptioning():
         # print('*'*100)
         # print("Output:", output)
         print("Step2, Dense Caption:\n")
-        print(output.split('[START]'[-1]))
+        # print(output.split('[START]'[-1]))
+        print(output)
         print('\n'+'*'*100)
         return output
     

@@ -53,10 +53,13 @@
 
 Please find installation instructions in [install.md](install.md).
 
-## 1. News and To Do List
 
-### News
-- Our project is very popular in twitter. Looking [the posted twitter](https://twitter.com/awinyimgprocess/status/1646225454599372800?s=46&t=HvOe9T2n35iFuCHP5aIHpQ) for details.
+<p align="left">
+  <img src="examples/icon/news.gif" alt="Your Image Description" width=100>  <strong><span style="font-size: 24px;">News</span></strong>
+</p>
+
+
+- 14/April/2023. Our project is very popular in twitter. Looking [the posted twitter](https://twitter.com/awinyimgprocess/status/1646225454599372800?s=46&t=HvOe9T2n35iFuCHP5aIHpQ) for details.
 
 ### To Do List
 
@@ -93,6 +96,9 @@ The generated text and image are show in "output/".
 
 **Note: Use GPT4 for good result as GPT3.5 miss the position information sometime.**
 
+
+**Note: If you find GRIT model not works, comment stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL in line 26 of grid_models.py to see error message.**
+
 ## Use gradio directly
 
 ```bash
@@ -105,22 +111,50 @@ If you have GPU Memory larger than 20GB.
 Use device='cuda' as default.
 
 
-## 3. Segment Visualization
+## 3. Visualization
 
+<!-- % a dog sitting on a porch with a bike -->
 
 <center>
+
+<head>
+  <style>
+    table {
+      font-size: 8px; /* Adjust the font size as needed */
+      padding: 2px;
+    }
+    /* img {
+      width: 300px; /* Adjust the image width as needed */
+      /* height: auto; Uncomment this line if you want to maintain aspect ratio */
+    } */
+  </style>
+</head>
+<body>
+
 <table>
   <tr>
     <td>
-      <img src="examples/segment_anything_example.jpg" alt="Your Image Description" width=220>
+      <img src="examples/3.jpg" alt="Your Image Description" width=300>
     </td>
     <td>
-      <img src="examples/semantic_segment_example.png" alt="Your Image Description" width=220>
+      A dog sitting on a porch with a bike.
+    </td>
+    <td>
+      <img src="examples/3_grit.jpg" alt="Your Image Description" width=300>
+    </td>
+    <td>
+      <img src="examples/3_semantic_segment_anything.png" alt="Your Image Description" width=300>
+    </td>
+    <td style="font-size: 4px;">
+      This image depicts a black and white dog sitting on a porch beside a red bike. The dense caption mentions other objects in the scene, such as a white car parked on the street and a red bike parked on the side of the road. The region semantic provides more specific information, including the porch, floor, wall, and trees. The dog can be seen sitting on the floor beside the bike, and there is also a parked bicycle and tree in the background. The wall is visible on one side of the image, while the street and trees can be seen in the other direction. 
     </td>
   </tr>
   <tr>
-    <td align="center">Segment Anything Mask</td>
+    <td align="center">Input</td>
+    <td align="center">BLIP2 Image Caption </td>
+    <td align="center">GRIT Dense Caption </td>
     <td align="center">Semantic Segment Anything </td>
+    <td align="center">GPT4 Generated Paragraph </td>
   </tr>
 </table>
 
@@ -136,6 +170,10 @@ Use device='cuda' as default.
 
 
 Interesting, we find compress image into paragraph. The retrieval result is even better than use source image.
+
+
+## Others
+If you have more suggestions or functions need to be implemented in this codebase, feel free to drop me an email awinyimg dot gmail dot com or open an issue.
 
 ## Acknowledgment
 
