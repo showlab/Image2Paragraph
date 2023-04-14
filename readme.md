@@ -3,6 +3,11 @@
 </p>
 
 
+**Demo**
+
+![](examples/demo.gif)
+
+
 # Transform Image Into Unique Paragraph 
 
 
@@ -13,6 +18,7 @@
 <p align="center">
   <img src="examples/gpu_memory.png" alt="Your Image Description" width=600>
 </p>
+
 
 **Main Pipeline**
 
@@ -71,6 +77,7 @@ like
 python main.py --image_src "/Code/Image2Paragraph/examples/3.jpg" --out_image_name "output/3_result.jpg"
 ```
 
+**Note: If you have GPU card with large memory. Comment line22 in models/segment_models/semantic_segment_anything_model.py for fast inference.**
 
 The generated text and image are show in "output/".
 

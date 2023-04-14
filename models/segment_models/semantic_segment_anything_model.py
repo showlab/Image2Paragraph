@@ -19,6 +19,7 @@ class SemanticSegment():
         self.model_init()
 
     def model_init(self):
+        # self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.device = 'cpu'
         self.init_clip()
         self.init_oneformer_ade20k()
