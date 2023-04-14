@@ -60,6 +60,7 @@ Please find installation instructions in [install.md](install.md).
 - Support Segment Anything for fine-grained semantic.
 
 ### Doing
+- Support GPT4 API.
 - Replace ChatGPT with own trained LLM.
 - Show retrieval result in gradio.
 
