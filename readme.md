@@ -53,16 +53,25 @@
 
 Please find installation instructions in [install.md](install.md).
 
-## 1. News
-### Done
-- GRIT example.
-- ControNet, BLIP2.
-- Support Segment Anything for fine-grained semantic.
+## 1. News and To Do List
 
-### Doing
-- Support GPT4 API.
-- Replace ChatGPT with own trained LLM.
-- Show retrieval result in gradio.
+### News
+- Our project is very popular in twitter. Looking [the posted twitter](https://twitter.com/awinyimgprocess/status/1646225454599372800?s=46&t=HvOe9T2n35iFuCHP5aIHpQ) for details.
+
+### To Do List
+
+#### Done
+- [x] GRIT example.
+- [x] ControNet, BLIP2.
+- [x] Semantic Segment Anything.
+- [x] Segment Anything for fine-grained semantic.
+- [x] Gradio.
+
+#### Doing
+- [ ] Support GPT4 API.
+- [ ] Replace ChatGPT with own trained LLM.
+- [ ] Show retrieval result in gradio.
+- [ ] Notebook/Huggingface Space.
 
 ## 2. Start
 
@@ -78,7 +87,7 @@ like
 python main.py --image_src "/Code/Image2Paragraph/examples/3.jpg" --out_image_name "output/3_result.jpg"
 ```
 
-**Note: If you have GPU card with large memory. Comment line22 in models/segment_models/semantic_segment_anything_model.py for fast inference.**
+**Note: If you have GPU card with larger memory than 8GB. Comment line22 in models/segment_models/semantic_segment_anything_model.py and line29 in models/blip2_model.py for fast inference.**
 
 The generated text and image are show in "output/".
 
