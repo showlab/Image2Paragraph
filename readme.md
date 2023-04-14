@@ -11,7 +11,7 @@
 # Transform Image Into Unique Paragraph 
 
 
-[![Twitter](examples/icon/twitter.png)](https://twitter.com/awinyimgprocess/status/1646225454599372800?s=46&t=HvOe9T2n35iFuCHP5aIHpQ), [Project Website(Coming Soon)]()
+![](https://img.shields.io/twitter/follow/awinyimgprocess?style=social), [Project Website(Coming Soon)]()
 
 
 **(Can run on 8GB memory GPU)**
