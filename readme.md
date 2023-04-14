@@ -45,7 +45,7 @@
 
 ##  Installation
 
-Please find installation instructions in [INSTALL.md](INSTALL.md).
+Please find installation instructions in [install.md](install.md).
 
 ## 1. News
 ### Done
