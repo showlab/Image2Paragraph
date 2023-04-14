@@ -1,5 +1,5 @@
 import os
-from models.grit.image_dense_captions import image_caption_api
+from models.grit_src.image_dense_captions import image_caption_api
 
 class DenseCaptioning():
     def __init__(self) -> None:

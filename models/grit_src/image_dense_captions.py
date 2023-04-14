@@ -10,11 +10,11 @@ from detectron2.config import get_cfg
 from detectron2.data.detection_utils import read_image
 from detectron2.utils.logger import setup_logger
 
-sys.path.insert(0, 'models/grit/third_party/CenterNet2/projects/CenterNet2/')
+sys.path.insert(0, 'models/grit_src/third_party/CenterNet2/projects/CenterNet2/')
 from centernet.config import add_centernet_config
-from models.grit.grit.config import add_grit_config
+from models.grit_src.grit.config import add_grit_config
 
-from models.grit.grit.predictor import VisualizationDemo
+from models.grit_src.grit.predictor import VisualizationDemo
 import json
 
 
@@ -51,7 +51,7 @@ def setup_cfg(args):
 
 
 def get_parser():
-    arg_dict = {'config_file': "models/grit/configs/GRiT_B_DenseCap_ObjectDet.yaml", 'cpu': False, 'confidence_threshold': 0.5, 'test_task': 'DenseCap', 'opts': ["MODEL.WEIGHTS", "pretrained_models/grit_b_densecap_objectdet.pth"]}
+    arg_dict = {'config_file': "models/grit_src/configs/GRiT_B_DenseCap_ObjectDet.yaml", 'cpu': False, 'confidence_threshold': 0.5, 'test_task': 'DenseCap', 'opts': ["MODEL.WEIGHTS", "pretrained_models/grit_b_densecap_objectdet.pth"]}
     return arg_dict
 
 def image_caption_api(image_src):
