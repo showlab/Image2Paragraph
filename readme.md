@@ -20,6 +20,7 @@
 </p>
 
 
+
 **Main Pipeline**
 
 <p align="center">
@@ -34,24 +35,6 @@
 <p align="center">
   <img src="examples/introduction_2.jpg" alt="Your Image Description" width=600>
 </p>
-
-
-## Visualization
-<p align="center">
-  <img src="output/2_result.png" alt="Your Image Description" width=600>
-</p>
-<p align="center">
-  <img src="output/3_result.jpg" alt="Your Image Description" width=600>
-</p>
-<p align="center">
-  <img src="output/4_result.jpg" alt="Your Image Description" width=600>
-</p>
-
-
-
-##  Installation
-
-Please find installation instructions in [install.md](install.md).
 
 
 <p align="left">
@@ -75,6 +58,24 @@ Please find installation instructions in [install.md](install.md).
 - [ ] Replace ChatGPT with own trained LLM.
 - [ ] Show retrieval result in gradio.
 - [ ] Notebook/Huggingface Space.
+
+## Visualization
+<p align="center">
+  <img src="output/2_result.png" alt="Your Image Description" width=600>
+</p>
+<p align="center">
+  <img src="output/3_result.jpg" alt="Your Image Description" width=600>
+</p>
+<p align="center">
+  <img src="output/4_result.jpg" alt="Your Image Description" width=600>
+</p>
+
+
+
+##  Installation
+
+Please find installation instructions in [install.md](install.md).
+
 
 ## 2. Start
 
@@ -111,25 +112,11 @@ If you have GPU Memory larger than 20GB.
 Use device='cuda' as default.
 
 
+
+
 ## 3. Visualization
 
 <!-- % a dog sitting on a porch with a bike -->
-
-<center>
-
-<head>
-  <style>
-    table {
-      font-size: 8px; /* Adjust the font size as needed */
-      padding: 2px;
-    }
-    /* img {
-      width: 300px; /* Adjust the image width as needed */
-      /* height: auto; Uncomment this line if you want to maintain aspect ratio */
-    } */
-  </style>
-</head>
-<body>
 
 <table>
   <tr>
@@ -145,21 +132,18 @@ Use device='cuda' as default.
     <td>
       <img src="examples/3_semantic_segment_anything.png" alt="Your Image Description" width=300>
     </td>
-    <td style="font-size: 4px;">
-      This image depicts a black and white dog sitting on a porch beside a red bike. The dense caption mentions other objects in the scene, such as a white car parked on the street and a red bike parked on the side of the road. The region semantic provides more specific information, including the porch, floor, wall, and trees. The dog can be seen sitting on the floor beside the bike, and there is also a parked bicycle and tree in the background. The wall is visible on one side of the image, while the street and trees can be seen in the other direction. 
-    </td>
   </tr>
   <tr>
     <td align="center">Input</td>
     <td align="center">BLIP2 Image Caption </td>
     <td align="center">GRIT Dense Caption </td>
     <td align="center">Semantic Segment Anything </td>
-    <td align="center">GPT4 Generated Paragraph </td>
   </tr>
 </table>
 
+The final generated paragraph with ChatGPT is:
 
-
+>       This image depicts a black and white dog sitting on a porch beside a red bike. The dense caption mentions other objects in the scene, such as a white car parked on the street and a red bike parked on the side of the road. The region semantic provides more specific information, including the porch, floor, wall, and trees. The dog can be seen sitting on the floor beside the bike, and there is also a parked bicycle and tree in the background. The wall is visible on one side of the image, while the street and trees can be seen in the other direction. 
 
 ## 4. Retrieval Result on COCO
 
