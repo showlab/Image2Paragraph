@@ -16,7 +16,7 @@ cd ..
 Simply run
 
 ```
-bash install.md
+bash install.sh
 ```
 
 or 
