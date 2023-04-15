@@ -17,7 +17,7 @@ class ImageToText:
         Use nouns rather than coordinates to show position information of each object.
         No more than 7 sentences.
         Only use one paragraph.
-        Describe position detailedly.
+        Describe position of each object.
         Do not appear number.
         """
         template = f"{prompt_prefix_1}{prompt_prefix_2}{{width}}X{{height}}{prompt_prefix_3}{{caption}}{prompt_prefix_4}{{dense_caption}}{prompt_prefix_5}{{region_semantic}}{prompt_suffix}"

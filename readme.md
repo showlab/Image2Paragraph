@@ -3,15 +3,16 @@
 </p>
 
 
-**Demo**
-
-![](examples/demo.gif)
-
-
 # Transform Image Into Unique Paragraph 
 
 
-![](https://img.shields.io/twitter/follow/awinyimgprocess?style=social), [Project Website(Coming Soon)]()
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/Awiny/Image2Paragraph), ![](https://img.shields.io/twitter/follow/awinyimgprocess?style=social), [Project Website(Coming Soon)]()
+
+(Run the model on huggingface for demo with cpu)
+
+**Demo**
+
+![](examples/demo.gif)
 
 
 **(Can run on 8GB memory GPU)**
@@ -121,7 +122,7 @@ The generated text and image are show in "output/".
 python main_gradio.py
 ```
 
-![](examples/gradio_visualization.png)
+![](examples/gradio_UI.png)
 
 If you have GPU Memory larger than 20GB.
 Use device='cuda' as default.
