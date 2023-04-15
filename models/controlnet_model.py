@@ -10,8 +10,8 @@ from diffusers import (
 
 
 class TextToImage:
-    def __init__(self):
-        # self.model = None
+    def __init__(self, device):
+        self.device = device
         self.model = self.initialize_model()
 
     def initialize_model(self):
@@ -29,6 +29,7 @@ class TextToImage:
             pipeline.scheduler.config
         )
         pipeline.enable_model_cpu_offload()
+        pipeline.to(self.device)
         return pipeline
 
     @staticmethod
@@ -42,8 +43,12 @@ class TextToImage:
         return image
 
     def text_to_image(self, text, image):
+        print('\033[1;35m' + '*' * 100 + '\033[0m')
+        print('\nStep5, Text to Image:')
         image = self.preprocess_image(image)
         generated_image = self.model(text, image, num_inference_steps=20).images[0]
+        print("Generated image has been svaed.")
+        print('\033[1;35m' + '*' * 100 + '\033[0m')
         return generated_image
     
     def text_to_image_debug(self, text, image):

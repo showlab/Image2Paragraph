@@ -53,14 +53,18 @@
 - [x] Segment Anything for fine-grained semantic.
 - [x] Gradio.
 - [x] Integrate GRIT into our code.
+- [x] Support GPT4 API.
+- [x] Notebook/Huggingface Space.
 
 #### Doing
-- [ ] Support GPT4 API.
 - [ ] Replace ChatGPT with own trained LLM.
+- [ ] Other grounding text2image model as instead of Canny ControlNet.
 - [ ] Show retrieval result in gradio.
-- [ ] Notebook/Huggingface Space.
 
 ## Visualization
+
+The text to image model is conrolnet with canny from diffuser.
+
 <p align="center">
   <img src="output/2_result.png" alt="Your Image Description" width=600>
 </p>
@@ -85,6 +89,16 @@ Please find installation instructions in [install.md](install.md).
 ```bash
 export OPENAI_KEY=[YOUR KEY HERE]
 python main.py  --image_src [image_path] --out_image_name [out_file_name]
+```
+
+If your GPU memory smaller than 8 GPB.
+```bash
+python main.py --image_caption_device cpu --semantic_segment_device cpu
+```
+
+If you have no GPU available.
+```bash
+python main.py --image_caption_device cpu --semantic_segment_device cpu --dense_caption_device cpu  --contolnet_device cpu
 ```
 
 like

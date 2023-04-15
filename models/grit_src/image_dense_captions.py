@@ -50,12 +50,14 @@ def setup_cfg(args):
     return cfg
 
 
-def get_parser():
+def get_parser(device):
     arg_dict = {'config_file': "models/grit_src/configs/GRiT_B_DenseCap_ObjectDet.yaml", 'cpu': False, 'confidence_threshold': 0.5, 'test_task': 'DenseCap', 'opts': ["MODEL.WEIGHTS", "pretrained_models/grit_b_densecap_objectdet.pth"]}
+    if device == "cpu":
+        arg_dict["cpu"] = True
     return arg_dict
 
-def image_caption_api(image_src):
-    args2 = get_parser()
+def image_caption_api(image_src, device):
+    args2 = get_parser(device)
     cfg = setup_cfg(args2)
     demo = VisualizationDemo(cfg)
     if image_src:

@@ -5,14 +5,11 @@ import torch
 
 
 class ImageCaptioning:
-    def __init__(self) -> None:
-        self.device = None
-        # self.processor, self.model = None, None
+    def __init__(self, device):
+        self.device = device
         self.processor, self.model = self.initialize_model()
 
     def initialize_model(self):
-        # device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.device = "cpu" # for low gpu memory devices
         if self.device == 'cpu':
             self.data_type = torch.float32
         else:
@@ -29,9 +26,10 @@ class ImageCaptioning:
         inputs = self.processor(images=image, return_tensors="pt").to(self.device, self.data_type)
         generated_ids = self.model.generate(**inputs)
         generated_text = self.processor.batch_decode(generated_ids, skip_special_tokens=True)[0].strip()
-        print('*'*100 + '\nStep1, BLIP2 caption:')
+        print('\033[1;35m' + '*' * 100 + '\033[0m')
+        print('\nStep1, BLIP2 caption:')
         print(generated_text)
-        print('\n' + '*'*100)
+        print('\033[1;35m' + '*' * 100 + '\033[0m')
         return generated_text
     
     def image_caption_debug(self, image_src):

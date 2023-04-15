@@ -18,27 +18,42 @@ def pil_image_to_base64(image):
 
 
 class ImageTextTransformation:
-    def __init__(self):
+    def __init__(self, args):
         # Load your big model here
+        self.args = args
         self.init_models()
         self.ref_image = None
     
     def init_models(self):
         openai_key = os.environ['OPENAI_KEY']
-        self.image_caption_model = ImageCaptioning()
-        self.dense_caption_model = DenseCaptioning()
+        print('\033[1;34m' + "Welcome to the Image2Paragraph toolbox...".center(50, '-') + '\033[0m')
+        print('\033[1;33m' + "Initializing models...".center(50, '-') + '\033[0m')
+        print('\033[1;31m' + "This is time-consuming, please wait...".center(50, '-') + '\033[0m')
+        self.image_caption_model = ImageCaptioning(device=self.args.image_caption_device)
+        self.dense_caption_model = DenseCaptioning(device=self.args.dense_caption_device)
         self.gpt_model = ImageToText(openai_key)
-        self.controlnet_model = TextToImage()
-        self.region_semantic_model = RegionSemantic()
+        self.controlnet_model = TextToImage(device=self.args.contolnet_device)
+        self.region_semantic_model = RegionSemantic(device=self.args.semantic_segment_device)
+        print('\033[1;32m' + "Model initialization finished!".center(50, '-') + '\033[0m')
 
     
     def image_to_text(self, img_src):
         # the information to generate paragraph based on the context
         self.ref_image = Image.open(img_src)
         width, height = read_image_width_height(img_src)
-        image_caption = self.image_caption_model.image_caption(img_src)
-        dense_caption = self.dense_caption_model.image_dense_caption(img_src)
-        region_semantic = self.region_semantic_model.region_semantic(img_src)
+        print(self.args)
+        if self.args.image_caption:
+            image_caption = self.image_caption_model.image_caption(img_src)
+        else:
+            image_caption = " "
+        if self.args.dense_caption:
+            dense_caption = self.dense_caption_model.image_dense_caption(img_src)
+        else:
+            dense_caption = " "
+        if self.args.semantic_segment:
+            region_semantic = self.region_semantic_model.region_semantic(img_src)
+        else:
+            region_semantic = " "
         generated_text = self.gpt_model.paragraph_summary_with_gpt(image_caption, dense_caption, region_semantic, width, height)
         return generated_text
 

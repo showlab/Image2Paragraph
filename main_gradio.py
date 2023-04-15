@@ -5,6 +5,19 @@ from PIL import Image
 import base64
 from io import BytesIO
 from models.image_text_transformation import ImageTextTransformation
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--gpt_version', choices=['gpt-3.5-turbo', 'gpt4'], default='gpt-3.5-turbo')
+parser.add_argument('--image_caption', action='store_true', dest='image_caption', default=True, help='Set this flag to True if you want to use BLIP2 Image Caption')
+parser.add_argument('--dense_caption', action='store_true', dest='dense_caption', default=True, help='Set this flag to True if you want to use Dense Caption')
+parser.add_argument('--semantic_segment', action='store_true', dest='semantic_segment', default=False, help='Set this flag to True if you want to use semantic segmentation')
+parser.add_argument('--image_caption_device', choices=['cuda', 'cpu'], default='cpu', help='Select the device: cuda or cpu, gpu memory larger than 14G is recommended')
+parser.add_argument('--dense_caption_device', choices=['cuda', 'cpu'], default='cuda', help='Select the device: cuda or cpu, < 6G GPU is not recommended>')
+parser.add_argument('--semantic_segment_device', choices=['cuda', 'cpu'], default='cpu', help='Select the device: cuda or cpu, gpu memory larger than 14G is recommended')
+parser.add_argument('--contolnet_device', choices=['cuda', 'cpu'], default='cuda', help='Select the device: cuda or cpu, <6G GPU is not recommended>')
+
+args = parser.parse_args()
 
 def pil_image_to_base64(image):
     buffered = BytesIO()
@@ -17,7 +30,14 @@ def add_logo():
         logo_base64 = base64.b64encode(f.read()).decode()
     return logo_base64
 
-def process_image(image_src, processor):
+def process_image(image_src, options, devices, processor):
+    processor.args.image_caption = "Image Caption" in options
+    processor.args.dense_caption = "Dense Caption" in options
+    processor.args.semantic_segment = "Semantic Segment" in options
+    processor.args.image_caption_device = "cuda" if "cuda_ic" in devices else "cpu"
+    processor.args.dense_caption_device = "cuda" if "cuda_dc" in devices else "cpu"
+    processor.args.semantic_segment_device = "cuda" if "cuda_ss" in devices else "cpu"
+    processor.args.contolnet_device = "cuda" if "cuda_cn" in devices else "cpu"
     gen_text = processor.image_to_text(image_src)
     gen_image = processor.text_to_image(gen_text)
     gen_image_str = pil_image_to_base64(gen_image)
@@ -34,36 +54,22 @@ def process_image(image_src, processor):
             <img src="data:image/jpeg;base64,{gen_image_str}" width="100%" />
         </div>
     </div>
-    <h2>Using Source Image to do Retrieval on COCO:</h2>
-    <div style="display: flex; flex-wrap: wrap;">
-        <div style="flex: 1;">
-            <h3>Retrieval Top-3 Text</h3>
-            <p>{gen_text}</p>
-        </div>
-        <div style="flex: 1;">
-            <h3>Retrieval Top-3 Image</h3>
-            <img src="data:image/jpeg;base64,{gen_image_str}" width="100%" />
-        </div>
-    </div>
-    <h2>Using Generated texts to do Retrieval on COCO:</h2>
-    <div style="display: flex; flex-wrap: wrap;">
-        <div style="flex: 1;">
-            <h3>Retrieval Top-3 Text</h3>
-            <p>{gen_text}</p>
-        </div>
-        <div style="flex: 1;">
-            <h3>Retrieval Top-3 Image</h3>
-            <img src="data:image/jpeg;base64,{gen_image_str}" width="100%" />
-        </div>
-    </div>
     '''
 
     return custom_output
 
-processor = ImageTextTransformation()
+processor = ImageTextTransformation(args)
 
 # Create Gradio input and output components
 image_input = gr.inputs.Image(type='filepath', label="Input Image")
+image_caption_checkbox = gr.inputs.Checkbox(label="Image Caption", default=True)
+dense_caption_checkbox = gr.inputs.Checkbox(label="Dense Caption", default=True)
+semantic_segment_checkbox = gr.inputs.Checkbox(label="Semantic Segment", default=False)
+image_caption_device = gr.inputs.Radio(choices=['cuda', 'cpu'], default='cpu', label='Image Caption Device')
+dense_caption_device = gr.inputs.Radio(choices=['cuda', 'cpu'], default='cuda', label='Dense Caption Device')
+semantic_segment_device = gr.inputs.Radio(choices=['cuda', 'cpu'], default='cpu', label='Semantic Segment Device')
+controlnet_device = gr.inputs.Radio(choices=['cuda', 'cpu'], default='cuda', label='ControlNet Device')
+
 
 logo_base64 = add_logo()
 # Create the title with the logo
@@ -71,12 +77,23 @@ title_with_logo = f'<img src="data:image/jpeg;base64,{logo_base64}" width="400" 
 
 # Create Gradio interface
 interface = gr.Interface(
-    fn=lambda image: process_image(image, processor),  # Pass the processor object using a lambda function
-    inputs=image_input,
+    fn=lambda image, options, devices: process_image(image, options, devices, processor),
+    inputs=[image_input,        
+            gr.CheckboxGroup(
+            label="Options",
+            choices=["Image Caption", "Dense Caption", "Semantic Segment"],
+            ),
+            gr.CheckboxGroup(
+                label="Device, ic: image caption, dc: dense caption, ss: semantic segment, cn: controlnet",
+                choices=["cuda_ic", "cuda_dc", "cuda_ss", "cuda_cn"],
+                default=["cuda_dc", "cuda_cn"],
+            )],
     outputs=gr.outputs.HTML(),
     title=title_with_logo,
     description="""
     This code support image to text transformation. Then the generated text can do retrieval, question answering et al to conduct zero-shot.
+    \n Semantic segment is very slow in cpu, best use on gpu.
+    \n If you have only 8GB Memory GPU, please set device as cpu for IC and SS.
     """
 )
 

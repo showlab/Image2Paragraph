@@ -15,12 +15,11 @@ from models.segment_models.configs.coco_id2label import CONFIG as CONFIG_COCO_ID
 nlp = spacy.load('en_core_web_sm')
 
 class SemanticSegment():
-    def __init__(self):
+    def __init__(self, device):
+        self.device = device
         self.model_init()
 
     def model_init(self):
-        # self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.device = 'cpu'
         self.init_clip()
         self.init_oneformer_ade20k()
         self.init_oneformer_coco()

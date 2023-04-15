@@ -2,8 +2,8 @@ import os
 from models.grit_src.image_dense_captions import image_caption_api
 
 class DenseCaptioning():
-    def __init__(self) -> None:
-        self.model = None
+    def __init__(self, device):
+        self.device = device
 
 
     def initialize_model(self):
@@ -18,9 +18,10 @@ class DenseCaptioning():
         return dense_caption
     
     def image_dense_caption(self, image_src):
-        dense_caption = image_caption_api(image_src)
+        dense_caption = image_caption_api(image_src, self.device)
+        print('\033[1;35m' + '*' * 100 + '\033[0m')
         print("Step2, Dense Caption:\n")
         print(dense_caption)
-        print('\n'+'*'*100)
+        print('\033[1;35m' + '*' * 100 + '\033[0m')
         return dense_caption
     
