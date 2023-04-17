@@ -15,6 +15,16 @@
 ![](examples/demo.gif)
 
 
+<p align="left">
+  <img src="examples/icon/news.gif" alt="Your Image Description" width=100>  <strong><span style="font-size: 24px;">News</span></strong>
+</p>
+
+- 17/April/2023. In addition to semantic segment anything, we use [Edit Anything](https://github.com/sail-sg/EditAnything) to get region-level semantic. Now all models takes less than 20s on 8G memory GPU card. (10times faster than previous version on cpu)
+- 17/April/2023. Our project is online on Huggingface. Have a try! [huggingface](https://huggingface.co/spaces/Awiny/Image2Paragraph/tree/main)
+- 14/April/2023. Our project is very popular in twitter. Looking [the posted twitter](https://twitter.com/awinyimgprocess/status/1646225454599372800?s=46&t=HvOe9T2n35iFuCHP5aIHpQ) for details.
+
+
+
 **(Can run on 8GB memory GPU within 20S!)**
 <p align="center">
   <img src="examples/gpu_memory.png" alt="Your Image Description" width=600>
@@ -37,14 +47,6 @@
   <img src="examples/introduction_2.jpg" alt="Your Image Description" width=600>
 </p>
 
-
-<p align="left">
-  <img src="examples/icon/news.gif" alt="Your Image Description" width=100>  <strong><span style="font-size: 24px;">News</span></strong>
-</p>
-
-- 17/April/2023. In addition to semantic segment anything, we use [Edit Anything](https://github.com/sail-sg/EditAnything) to get region-level semantic. Now all models takes less than 20s on 8G memory GPU card.
-- 17/April/2023. Our project is online on Huggingface. Have a try! [huggingface](https://huggingface.co/spaces/Awiny/Image2Paragraph/tree/main)
-- 14/April/2023. Our project is very popular in twitter. Looking [the posted twitter](https://twitter.com/awinyimgprocess/status/1646225454599372800?s=46&t=HvOe9T2n35iFuCHP5aIHpQ) for details.
 
 ### To Do List
 
