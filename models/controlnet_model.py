@@ -35,9 +35,11 @@ class TextToImage:
         pipeline.scheduler = UniPCMultistepScheduler.from_config(
             pipeline.scheduler.config
         )
-        pipeline.enable_model_cpu_offload()
         pipeline.to(self.device)
+        if self.device != 'cpu':
+            pipeline.enable_model_cpu_offload()
         return pipeline
+
 
     @staticmethod
     def preprocess_image(image):
