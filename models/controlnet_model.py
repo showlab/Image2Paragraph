@@ -15,15 +15,22 @@ class TextToImage:
         self.model = self.initialize_model()
 
     def initialize_model(self):
+        if self.device == 'cpu':
+            self.data_type = torch.float32
+        else:
+            self.data_type = torch.float16
         controlnet = ControlNetModel.from_pretrained(
             "fusing/stable-diffusion-v1-5-controlnet-canny",
-            torch_dtype=torch.float16,
-        )
+            torch_dtype=self.data_type,
+            map_location=self.device,  # Add this line
+        ).to(self.device)
         pipeline = StableDiffusionControlNetPipeline.from_pretrained(
+            # "pretrained_models/stable-diffusion-v1-5",
             "runwayml/stable-diffusion-v1-5",
             controlnet=controlnet,
             safety_checker=None,
-            torch_dtype=torch.float16,
+            torch_dtype=self.data_type,
+            map_location=self.device,  # Add this line
         )
         pipeline.scheduler = UniPCMultistepScheduler.from_config(
             pipeline.scheduler.config
