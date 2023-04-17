@@ -14,6 +14,37 @@ def read_image_width_height(image_path):
     width, height = image.size
     return width, height
 
+def resize_long_edge(image, target_size=384):
+    # Calculate the aspect ratio
+    width, height = image.size
+    aspect_ratio = float(width) / float(height)
+
+    # Determine the new dimensions
+    if width > height:
+        new_width = target_size
+        new_height = int(target_size / aspect_ratio)
+    else:
+        new_width = int(target_size * aspect_ratio)
+        new_height = target_size
+
+    # Resize the image
+    resized_image = image.resize((new_width, new_height), Image.ANTIALIAS)
+    return resized_image
+
+def resize_long_edge_cv2(image, target_size=384):
+    height, width = image.shape[:2]
+    aspect_ratio = float(width) / float(height)
+
+    if height > width:
+        new_height = target_size
+        new_width = int(target_size * aspect_ratio)
+    else:
+        new_width = target_size
+        new_height = int(target_size / aspect_ratio)
+
+    resized_image = cv2.resize(image, (new_width, new_height), interpolation=cv2.INTER_AREA)
+    return resized_image
+
 def display_images_and_text(source_image_path, generated_image, generated_paragraph, outfile_name):
     source_image = Image.open(source_image_path)
     # Create a new image that can fit the images and the text

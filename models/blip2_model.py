@@ -2,6 +2,7 @@ from PIL import Image
 import requests
 from transformers import Blip2Processor, Blip2ForConditionalGeneration, BlipProcessor, BlipForConditionalGeneration
 import torch
+from utils.util import resize_long_edge
 
 
 class ImageCaptioning:
@@ -20,12 +21,13 @@ class ImageCaptioning:
         # )
         # for gpu with small memory
         processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
-        model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
+        model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base", torch_dtype=self.data_type)
         model.to(self.device)
         return processor, model
 
     def image_caption(self, image_src):
         image = Image.open(image_src)
+        image = resize_long_edge(image, 384)
         inputs = self.processor(images=image, return_tensors="pt").to(self.device, self.data_type)
         generated_ids = self.model.generate(**inputs)
         generated_text = self.processor.batch_decode(generated_ids, skip_special_tokens=True)[0].strip()

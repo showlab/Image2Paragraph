@@ -43,7 +43,8 @@
   <img src="examples/icon/news.gif" alt="Your Image Description" width=100>  <strong><span style="font-size: 24px;">News</span></strong>
 </p>
 
-
+- 17/April/2023. In addition to semantic segment anything, we use [Edit Anything](https://github.com/sail-sg/EditAnything) to get region-level semantic.
+- 17/April/2023. Our project is online on Huggingface. Have a try! [huggingface](https://huggingface.co/spaces/Awiny/Image2Paragraph/tree/main)
 - 14/April/2023. Our project is very popular in twitter. Looking [the posted twitter](https://twitter.com/awinyimgprocess/status/1646225454599372800?s=46&t=HvOe9T2n35iFuCHP5aIHpQ) for details.
 
 ### To Do List
@@ -57,9 +58,10 @@
 - [x] Integrate GRIT into our code.
 - [x] Support GPT4 API.
 - [x] Notebook/Huggingface Space.
+- [x] Region Semantic Classification from Edit-Anything.
+- [x] Make the model lightweight.
 
 #### Doing
-- [ ] Make the model lightweight.
 - [ ] Replace ChatGPT with own trained LLM.
 - [ ] Other grounding text2image model as instead of Canny ControlNet.
 - [ ] Show retrieval result in gradio.
@@ -179,4 +181,4 @@ If you have more suggestions or functions need to be implemented in this codebas
 
 ## Acknowledgment
 
-This work is based on [ChatGPT](http://chat.openai.com), [BLIP2](https://huggingface.co/spaces/Salesforce/BLIP2), [GRIT](https://github.com/JialianW/GRiT),  [OFA](https://github.com/OFA-Sys/OFA),[Segment-Anything](https://segment-anything.com), [Semantic-Segment-Anything](https://github.com/fudan-zvg/Semantic-Segment-Anything), [ControlNet](https://github.com/lllyasviel/ControlNet).
+This work is based on [ChatGPT](http://chat.openai.com), [Edit_Anything](https://github.com/sail-sg/EditAnything), [BLIP2](https://huggingface.co/spaces/Salesforce/BLIP2), [GRIT](https://github.com/JialianW/GRiT),  [OFA](https://github.com/OFA-Sys/OFA),[Segment-Anything](https://segment-anything.com), [Semantic-Segment-Anything](https://github.com/fudan-zvg/Semantic-Segment-Anything), [ControlNet](https://github.com/lllyasviel/ControlNet).

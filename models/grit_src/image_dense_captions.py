@@ -16,6 +16,7 @@ from models.grit_src.grit.config import add_grit_config
 
 from models.grit_src.grit.predictor import VisualizationDemo
 import json
+from utils.util import resize_long_edge_cv2
 
 
 # constants
@@ -62,6 +63,7 @@ def image_caption_api(image_src, device):
     demo = VisualizationDemo(cfg)
     if image_src:
         img = read_image(image_src, format="BGR")
+        img = resize_long_edge_cv2(img, 384)
         predictions, visualized_output = demo.run_on_image(img)
         new_caption = dense_pred_to_caption(predictions)
     return new_caption

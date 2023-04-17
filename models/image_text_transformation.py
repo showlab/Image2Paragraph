@@ -3,7 +3,7 @@ from models.grit_model import DenseCaptioning
 from models.gpt_model import ImageToText
 from models.controlnet_model import TextToImage
 from models.region_semantic import RegionSemantic
-from utils.util import read_image_width_height, display_images_and_text
+from utils.util import read_image_width_height, display_images_and_text, resize_long_edge
 import argparse
 from PIL import Image
 import base64
@@ -33,13 +33,15 @@ class ImageTextTransformation:
         self.dense_caption_model = DenseCaptioning(device=self.args.dense_caption_device)
         self.gpt_model = ImageToText(openai_key)
         self.controlnet_model = TextToImage(device=self.args.contolnet_device)
-        self.region_semantic_model = RegionSemantic(device=self.args.semantic_segment_device)
+        self.region_semantic_model = RegionSemantic(device=self.args.semantic_segment_device, image_caption_model=self.image_caption_model, region_classify_model=self.args.region_classify_model)
         print('\033[1;32m' + "Model initialization finished!".center(50, '-') + '\033[0m')
 
     
     def image_to_text(self, img_src):
         # the information to generate paragraph based on the context
         self.ref_image = Image.open(img_src)
+        # resize image to long edge 384
+        self.ref_image = resize_long_edge(self.ref_image, 384)
         width, height = read_image_width_height(img_src)
         print(self.args)
         if self.args.image_caption:

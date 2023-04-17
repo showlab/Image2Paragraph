@@ -10,6 +10,7 @@ from PIL import Image
 import pycocotools.mask as maskUtils
 from models.segment_models.configs.ade20k_id2label import CONFIG as CONFIG_ADE20K_ID2LABEL
 from models.segment_models.configs.coco_id2label import CONFIG as CONFIG_COCO_ID2LABEL
+from utils.util import resize_long_edge, resize_long_edge_cv2
 # from mmdet.core.visualization.image import imshow_det_bboxes # comment this line if you don't use mmdet
 
 nlp = spacy.load('en_core_web_sm')
@@ -113,6 +114,7 @@ class SemanticSegment():
         :return: dict('segmentation', 'area', 'bbox', 'predicted_iou', 'point_coords', 'stability_score', 'crop_box', "class_name", "class_proposals"})
         """
         img = mmcv.imread(img_src)
+        img = resize_long_edge_cv2(img, 384)
         oneformer_coco_seg = self.oneformer_segmentation(Image.fromarray(img), self.oneformer_coco_processor, self.oneformer_coco_model)
         oneformer_ade20k_seg = self.oneformer_segmentation(Image.fromarray(img), self.oneformer_ade20k_processor, self.oneformer_ade20k_model)
         bitmasks, class_names = [], []
