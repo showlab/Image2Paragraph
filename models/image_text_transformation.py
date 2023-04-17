@@ -30,7 +30,7 @@ class ImageTextTransformation:
         print('\033[1;34m' + "Welcome to the Image2Paragraph toolbox...".center(50, '-') + '\033[0m')
         print('\033[1;33m' + "Initializing models...".center(50, '-') + '\033[0m')
         print('\033[1;31m' + "This is time-consuming, please wait...".center(50, '-') + '\033[0m')
-        self.image_caption_model = ImageCaptioning(device=self.args.image_caption_device)
+        self.image_caption_model = ImageCaptioning(device=self.args.image_caption_device, captioner_base_model=self.args.captioner_base_model)
         self.dense_caption_model = DenseCaptioning(device=self.args.dense_caption_device)
         self.gpt_model = ImageToText(openai_key)
         self.controlnet_model = TextToImage(device=self.args.contolnet_device)

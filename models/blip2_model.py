@@ -6,22 +6,27 @@ from utils.util import resize_long_edge
 
 
 class ImageCaptioning:
-    def __init__(self, device):
+    def __init__(self, device, captioner_base_model='blip'):
         self.device = device
+        self.captioner_base_model = captioner_base_model
         self.processor, self.model = self.initialize_model()
 
-    def initialize_model(self):
+    def initialize_model(self,):
         if self.device == 'cpu':
             self.data_type = torch.float32
         else:
             self.data_type = torch.float16
-        # processor = Blip2Processor.from_pretrained("Salesforce/blip2-opt-2.7b")
-        # model = Blip2ForConditionalGeneration.from_pretrained(
-        #     "Salesforce/blip2-opt-2.7b", torch_dtype=self.data_type
-        # )
+        if self.captioner_base_model == 'blip2':
+            processor = Blip2Processor.from_pretrained("Salesforce/blip2-opt-2.7b")
+            model = Blip2ForConditionalGeneration.from_pretrained(
+                "Salesforce/blip2-opt-2.7b", torch_dtype=self.data_type
+            )
         # for gpu with small memory
-        processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
-        model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base", torch_dtype=self.data_type)
+        elif self.captioner_base_model == 'blip':
+            processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
+            model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base", torch_dtype=self.data_type)
+        else:
+            raise ValueError('arch not supported')
         model.to(self.device)
         return processor, model
 
