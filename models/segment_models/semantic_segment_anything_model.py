@@ -27,12 +27,14 @@ class SemanticSegment():
         self.init_clipseg()
 
     def init_clip(self):
-        model_name = "openai/clip-vit-large-patch14"
+        # model_name = "openai/clip-vit-large-patch14"
+        model_name = "openai/clip-vit-base-patch32"
         self.clip_processor = CLIPProcessor.from_pretrained(model_name)
         self.clip_model = CLIPModel.from_pretrained(model_name).to(self.device)
 
     def init_oneformer_ade20k(self):
-        model_name = "shi-labs/oneformer_ade20k_swin_large"
+        # model_name = "shi-labs/oneformer_ade20k_swin_large"
+        model_name = "shi-labs/oneformer_ade20k_swin_tiny"
         self.oneformer_ade20k_processor = OneFormerProcessor.from_pretrained(model_name)
         self.oneformer_ade20k_model = OneFormerForUniversalSegmentation.from_pretrained(model_name).to(self.device)
 
@@ -42,7 +44,8 @@ class SemanticSegment():
         self.oneformer_coco_model = OneFormerForUniversalSegmentation.from_pretrained(model_name).to(self.device)
 
     def init_blip(self):
-        model_name = "Salesforce/blip-image-captioning-large"
+        model_name = "Salesforce/blip-image-captioning-base"
+        # model_name = "Salesforce/blip-image-captioning-large"
         self.blip_processor = BlipProcessor.from_pretrained(model_name)
         self.blip_model = BlipForConditionalGeneration.from_pretrained(model_name).to(self.device)
 

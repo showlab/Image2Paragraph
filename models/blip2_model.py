@@ -1,6 +1,6 @@
 from PIL import Image
 import requests
-from transformers import Blip2Processor, Blip2ForConditionalGeneration
+from transformers import Blip2Processor, Blip2ForConditionalGeneration, BlipProcessor, BlipForConditionalGeneration
 import torch
 
 
@@ -14,10 +14,13 @@ class ImageCaptioning:
             self.data_type = torch.float32
         else:
             self.data_type = torch.float16
-        processor = Blip2Processor.from_pretrained("Salesforce/blip2-opt-2.7b")
-        model = Blip2ForConditionalGeneration.from_pretrained(
-            "Salesforce/blip2-opt-2.7b", torch_dtype=self.data_type
-        )
+        # processor = Blip2Processor.from_pretrained("Salesforce/blip2-opt-2.7b")
+        # model = Blip2ForConditionalGeneration.from_pretrained(
+        #     "Salesforce/blip2-opt-2.7b", torch_dtype=self.data_type
+        # )
+        # for gpu with small memory
+        processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
+        model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
         model.to(self.device)
         return processor, model
 

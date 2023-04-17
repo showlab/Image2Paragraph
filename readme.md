@@ -9,6 +9,7 @@
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/Awiny/Image2Paragraph), ![](https://img.shields.io/twitter/follow/awinyimgprocess?style=social), [Project Website(Coming Soon)]()
 
 (Run the model on huggingface for demo with cpu)
+(huggingface sometimes may not work with safari, use chrome)
 
 **Demo**
 
@@ -58,6 +59,7 @@
 - [x] Notebook/Huggingface Space.
 
 #### Doing
+- [ ] Make the model lightweight.
 - [ ] Replace ChatGPT with own trained LLM.
 - [ ] Other grounding text2image model as instead of Canny ControlNet.
 - [ ] Show retrieval result in gradio.
