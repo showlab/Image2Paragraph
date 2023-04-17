@@ -8,7 +8,6 @@
 
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/Awiny/Image2Paragraph), ![](https://img.shields.io/twitter/follow/awinyimgprocess?style=social), [Project Website(Coming Soon)]()
 
-(Run the model on huggingface for demo with cpu)
 (huggingface sometimes may not work with safari, use chrome)
 
 **Demo**
@@ -16,7 +15,7 @@
 ![](examples/demo.gif)
 
 
-**(Can run on 8GB memory GPU)**
+**(Can run on 8GB memory GPU within 20S!)**
 <p align="center">
   <img src="examples/gpu_memory.png" alt="Your Image Description" width=600>
 </p>
@@ -43,7 +42,7 @@
   <img src="examples/icon/news.gif" alt="Your Image Description" width=100>  <strong><span style="font-size: 24px;">News</span></strong>
 </p>
 
-- 17/April/2023. In addition to semantic segment anything, we use [Edit Anything](https://github.com/sail-sg/EditAnything) to get region-level semantic.
+- 17/April/2023. In addition to semantic segment anything, we use [Edit Anything](https://github.com/sail-sg/EditAnything) to get region-level semantic. Now all models takes less than 20s on 8G memory GPU card.
 - 17/April/2023. Our project is online on Huggingface. Have a try! [huggingface](https://huggingface.co/spaces/Awiny/Image2Paragraph/tree/main)
 - 14/April/2023. Our project is very popular in twitter. Looking [the posted twitter](https://twitter.com/awinyimgprocess/status/1646225454599372800?s=46&t=HvOe9T2n35iFuCHP5aIHpQ) for details.
 
