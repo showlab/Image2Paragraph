@@ -4,18 +4,19 @@ from models.segment_models.edit_anything_model import EditAnything
 
 
 class RegionSemantic():
-    def __init__(self, device, image_caption_model, region_classify_model='edit_anything'):
+    def __init__(self, device, image_caption_model, region_classify_model='edit_anything', sam_arch='vit_b'):
         self.device = device
+        self.sam_arch = sam_arch
         self.image_caption_model = image_caption_model
         self.region_classify_model = region_classify_model
         self.init_models()
 
     def init_models(self):
-        self.segment_model = SegmentAnything(self.device)
+        self.segment_model = SegmentAnything(self.device, arch=self.sam_arch)
         if self.region_classify_model == 'ssa':
             self.semantic_segment_model = SemanticSegment(self.device)
         elif self.region_classify_model == 'edit_anything':
-            self.edit_anything_model = EditAnything(self.device, self.image_caption_model)
+            self.edit_anything_model = EditAnything(self.image_caption_model)
             print('initalize edit anything model')
         else:
             raise ValueError("semantic_class_model must be 'ssa' or 'edit_anything'")
@@ -41,7 +42,9 @@ class RegionSemantic():
     def region_semantic(self, img_src, region_classify_model='edit_anything'):
         print('\033[1;35m' + '*' * 100 + '\033[0m')
         print("\nStep3, Semantic Prompt:")
+        print('extract region segmentation with SAM model....\n')
         anns = self.segment_model.generate_mask(img_src)
+        print('finished...\n')
         if region_classify_model == 'ssa':
             print('generate region supervision with blip2 model....\n')
             anns_w_class = self.semantic_segment_model.semantic_class_w_mask(img_src, anns)

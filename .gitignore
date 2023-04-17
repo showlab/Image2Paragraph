@@ -1,2 +1,4 @@
 pretrained_models/sam_vit_h_4b8939.pth
+pretrained_models/sam_vit_l_0b3195.pth
+pretrained_models/sam_vit_b_01ec64.pth
 pretrained_models/grit_b_densecap_objectdet.pth
