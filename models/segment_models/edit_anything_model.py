@@ -58,5 +58,7 @@ class EditAnything:
 
     def semantic_class_w_mask(self, img_src, anns):
         image = Image.open(img_src)
+        if (image.mode == "RGBA"):
+            image = image.convert("RGB")
         image = resize_long_edge(image, 384)
         return self.region_level_semantic_api(image, anns)
