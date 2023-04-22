@@ -39,17 +39,17 @@ class RegionSemantic():
         print('\033[1;35m' + '*' * 100 + '\033[0m')
         return semantic_prompt
 
-    def region_semantic(self, img_src, region_classify_model='edit_anything'):
+    def region_semantic(self, img_src):
         print('\033[1;35m' + '*' * 100 + '\033[0m')
         print("\nStep3, Semantic Prompt:")
         print('extract region segmentation with SAM model....\n')
         anns = self.segment_model.generate_mask(img_src)
         print('finished...\n')
-        if region_classify_model == 'ssa':
+        if self.region_classify_model == 'ssa':
             print('generate region supervision with blip2 model....\n')
             anns_w_class = self.semantic_segment_model.semantic_class_w_mask(img_src, anns)
             print('finished...\n')
-        elif region_classify_model == 'edit_anything':
+        elif self.region_classify_model == 'edit_anything':
             print('generate region supervision with edit anything model....\n')
             anns_w_class = self.edit_anything_model.semantic_class_w_mask(img_src, anns)
             print('finished...\n')
