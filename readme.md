@@ -114,14 +114,13 @@ like
 python main.py --image_src "examples/3.jpg" --out_image_name "output/3_result.jpg"
 ```
 
-**Note: If you have GPU card with larger memory than 8GB. Comment line22 in models/segment_models/semantic_segment_anything_model.py and line29 in models/blip2_model.py for fast inference.**
+**Note: If you have GPU card with larger memory than 15GB. Set all device to GPU for fast inference.**
 
 The generated text and image are show in "output/".
 
 **Note: Use GPT4 for good result as GPT3.5 miss the position information sometime.**
 
 
-**Note: If you find GRIT model not works, comment stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL in line 26 of grid_models.py to see error message.**
 
 ## Use gradio directly
 
