@@ -8,7 +8,7 @@
 
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/Awiny/Image2Paragraph), ![](https://img.shields.io/twitter/follow/awinyimgprocess?style=social), [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1RCzMgApzbwI6cp_NZGIbHBP_HDslZjeH?usp=sharing)
 
-[Project Website(Coming Soon)]()
+[Project Website](https://zhaohengyuan1.github.io/image2paragraph.github.io)
 
 (huggingface sometimes may not work with safari, use chrome)
 
