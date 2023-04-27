@@ -13,7 +13,7 @@ wget -c https://datarelease.blob.core.windows.net/grit/models/grit_b_densecap_ob
 cd ..
 ```
 
-### 1.2 Install Enviornment
+### 1.2 Install Environment
 
 Simply run
 

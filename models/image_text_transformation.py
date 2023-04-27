@@ -10,6 +10,7 @@ import base64
 from io import BytesIO
 import os
 
+
 def pil_image_to_base64(image):
     buffered = BytesIO()
     image.save(buffered, format="JPEG")
@@ -17,27 +18,46 @@ def pil_image_to_base64(image):
     return img_str
 
 
+'''
+ buat fungsi dengan spesifikasi berikut ini:
+ Fungsi pil_image_to_base64 dengan parameter image:
+     1. Inisialisasi buffered sebagai objek BytesIO
+     2. Simpan image ke dalam buffered dengan format JPEG
+     3. Dapatkan nilai byte dari buffered
+     4. Enkripsi nilai byte tersebut menggunakan Base64 dan konversi hasilnya menjadi string
+     5. Kembalikan string hasil enkripsi Base64
+'''
+
+
 class ImageTextTransformation:
     def __init__(self, args):
         # Load your big model here
+        self.region_semantic_model = None
+        self.controlnet_model = None
+        self.gpt_model = None
+        self.dense_caption_model = None
+        self.image_caption_model = None
         self.args = args
         self.init_models()
         self.ref_image = None
-    
+
     def init_models(self):
         openai_key = os.environ['OPENAI_KEY']
         print(self.args)
         print('\033[1;34m' + "Welcome to the Image2Paragraph toolbox...".center(50, '-') + '\033[0m')
         print('\033[1;33m' + "Initializing models...".center(50, '-') + '\033[0m')
         print('\033[1;31m' + "This is time-consuming, please wait...".center(50, '-') + '\033[0m')
-        self.image_caption_model = ImageCaptioning(device=self.args.image_caption_device, captioner_base_model=self.args.captioner_base_model)
+        self.image_caption_model = ImageCaptioning(device=self.args.image_caption_device,
+                                                   captioner_base_model=self.args.captioner_base_model)
         self.dense_caption_model = DenseCaptioning(device=self.args.dense_caption_device)
         self.gpt_model = ImageToText(openai_key)
         self.controlnet_model = TextToImage(device=self.args.contolnet_device)
-        self.region_semantic_model = RegionSemantic(device=self.args.semantic_segment_device, image_caption_model=self.image_caption_model, region_classify_model=self.args.region_classify_model, sam_arch=self.args.sam_arch)
+        self.region_semantic_model = RegionSemantic(device=self.args.semantic_segment_device,
+                                                    image_caption_model=self.image_caption_model,
+                                                    region_classify_model=self.args.region_classify_model,
+                                                    sam_arch=self.args.sam_arch)
         print('\033[1;32m' + "Model initialization finished!".center(50, '-') + '\033[0m')
 
-    
     def image_to_text(self, img_src):
         # the information to generate paragraph based on the context
         self.ref_image = Image.open(img_src)
@@ -57,7 +77,8 @@ class ImageTextTransformation:
             region_semantic = self.region_semantic_model.region_semantic(img_src)
         else:
             region_semantic = " "
-        generated_text = self.gpt_model.paragraph_summary_with_gpt(image_caption, dense_caption, region_semantic, width, height)
+        generated_text = self.gpt_model.paragraph_summary_with_gpt(image_caption, dense_caption, region_semantic, width,
+                                                                   height)
         return generated_text
 
     def text_to_image(self, text):

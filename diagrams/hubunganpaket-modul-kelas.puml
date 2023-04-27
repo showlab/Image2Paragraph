@@ -1,0 +1,22 @@
+@startuml
+
+package geometri {
+
+  package segitiga {
+    class SegitigaSikuSiku
+    class SegitigaSamaSisi
+  }
+
+  package persegi {
+    class PersegiPanjang
+    class Kubus
+  }
+
+  package lingkaran {
+    class Lingkaran
+    class Bola
+  }
+
+}
+
+@enduml

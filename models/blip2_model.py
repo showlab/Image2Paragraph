@@ -11,7 +11,7 @@ class ImageCaptioning:
         self.captioner_base_model = captioner_base_model
         self.processor, self.model = self.initialize_model()
 
-    def initialize_model(self,):
+    def initialize_model(self, ):
         if self.device == 'cpu':
             self.data_type = torch.float32
         else:
@@ -24,7 +24,8 @@ class ImageCaptioning:
         # for gpu with small memory
         elif self.captioner_base_model == 'blip':
             processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
-            model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base", torch_dtype=self.data_type)
+            model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base",
+                                                                 torch_dtype=self.data_type)
         else:
             raise ValueError('arch not supported')
         model.to(self.device)
@@ -41,6 +42,6 @@ class ImageCaptioning:
         print(generated_text)
         print('\033[1;35m' + '*' * 100 + '\033[0m')
         return generated_text
-    
+
     def image_caption_debug(self, image_src):
         return "A dish with salmon, broccoli, and something yellow."

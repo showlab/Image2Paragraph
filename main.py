@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     processor = ImageTextTransformation(args)
     generated_text = processor.image_to_text(args.image_src)
-    generated_image = processor.text_to_image(generated_text)
+    # generated_image = processor.text_to_image(generated_text)
     ## then text to image
     print("*" * 50)
     print("Generated Text:")

@@ -1,0 +1,10 @@
+Input Image,Options,"Device, ic: image caption, dc: dense caption, ss: semantic segment, cn: controlnet",output,flag,username,timestamp
+/home/dfai/PycharmProjects/Image2Paragraph/flagged/Input Image/tmp1pf18_iw.png,['Semantic Segment'],[],"'
+    <h2>Image->Text->Image:</h2>
+    <div style=""display: flex; flex-wrap: wrap;"">
+        <div style=""flex: 1;"">
+            <h3>Image2Text</h3>
+            <p>This 600X450 resolution image features multiple objects. One of these objects is a man who is wearing a black shirt and tie, and he is positioned in a way that makes it seem like he is looking at the moon. Another man, this one wearing a suit and tie, is also present in the image, and he too appears to be gazing up at the moon. Additionally, there is a black bear that can be seen in profile, standing out against a dark background. Another man, this one sporting a white beard and black shirt, is also present in the image. Finally, a white sheet of paper with a visible shadow is also part of the picture. While the object positions are varied, each object is clearly visible and can be easily distinguished by its color and shape.</p>
+        </div>         
+    </div>
+    ",,,2023-04-27 09:33:45.569041
